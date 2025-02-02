@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}联系我们 - Chaohub AI Omniverse{% endblock %}
+
+{% block content %}
+<!-- 联系我们头部 -->
+<section class="gradient-bg py-20">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+                联系我们
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                无论您有任何问题或合作意向，我们都期待与您沟通交流
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 联系方式和表单 -->
+<section class="py-20 bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- 联系信息 -->
+            <div class="space-y-8">
+                <div class="card rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-blue-400 mb-6">联系方式</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-2xl text-blue-400 mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-lg font-semibold text-blue-300">地址</h3>
+                                <p class="text-gray-400">安徽省巢湖市科技创新中心</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone text-2xl text-blue-400 mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-lg font-semibold text-blue-300">电话</h3>
+                                <p class="text-gray-400">+86 XXX-XXXX-XXXX</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-2xl text-blue-400 mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-lg font-semibold text-blue-300">邮箱</h3>
+                                <p class="text-gray-400">contact@chaohub.ai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-blue-400 mb-6">关注我们</h2>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors duration-200">
+                            <i class="fab fa-weixin text-3xl"></i>
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors duration-200">
+                            <i class="fab fa-weibo text-3xl"></i>
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors duration-200">
+                            <i class="fab fa-linkedin text-3xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 联系表单 -->
+            <div class="card rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-blue-400 mb-6">发送消息</h2>
+                <form action="/submit-contact" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-blue-300 mb-2">姓名</label>
+                        <input type="text" id="name" name="name" required
+                            class="contact-input w-full px-4 py-2 rounded-lg"
+                            placeholder="请输入您的姓名">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-blue-300 mb-2">邮箱</label>
+                        <input type="email" id="email" name="email" required
+                            class="contact-input w-full px-4 py-2 rounded-lg"
+                            placeholder="请输入您的邮箱">
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-blue-300 mb-2">主题</label>
+                        <input type="text" id="subject" name="subject" required
+                            class="contact-input w-full px-4 py-2 rounded-lg"
+                            placeholder="请输入消息主题">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-blue-300 mb-2">消息内容</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="contact-input w-full px-4 py-2 rounded-lg resize-none"
+                            placeholder="请输入您的消息内容"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                        发送消息 <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+.contact-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+}
+.contact-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #60A5FA;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+{% endblock %} 

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Chaohub AI Omniverse{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        #backgroundCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(17, 24, 39, 0.95);
+            z-index: 100;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .menu-button {
+                display: block;
+            }
+            .desktop-menu {
+                display: none;
+            }
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        {% block extra_css %}{% endblock %}
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <canvas id="backgroundCanvas"></canvas>
+    
+    <div class="content-wrapper">
+        <nav class="bg-gray-900 shadow-lg fixed w-full z-50 border-b border-blue-500/30">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex-shrink-0">
+                        <a href="/" class="text-2xl font-bold text-blue-400 flex items-center">
+                            <i class="fas fa-network-wired mr-2"></i>
+                            Chaohub AI
+                        </a>
+                    </div>
+                    <!-- 移动端菜单按钮 -->
+                    <button class="menu-button md:hidden text-gray-300 hover:text-blue-400" onclick="toggleMenu()">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    <!-- 桌面端菜单 -->
+                    <div class="hidden md:block desktop-menu">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="/" class="{% if request.path == '/' %}text-blue-400 hover:text-blue-300{% else %}text-gray-300 hover:text-blue-400{% endif %} px-3 py-2 transition-colors duration-200">
+                                <i class="fas fa-home mr-1"></i> 首页
+                            </a>
+                            <a href="/about" class="{% if request.path == '/about' %}text-blue-400 hover:text-blue-300{% else %}text-gray-300 hover:text-blue-400{% endif %} px-3 py-2 transition-colors duration-200">
+                                <i class="fas fa-info-circle mr-1"></i> 关于我们
+                            </a>
+                            <a href="/services" class="{% if request.path == '/services' %}text-blue-400 hover:text-blue-300{% else %}text-gray-300 hover:text-blue-400{% endif %} px-3 py-2 transition-colors duration-200">
+                                <i class="fas fa-cogs mr-1"></i> 服务
+                            </a>
+                            <a href="/contact" class="{% if request.path == '/contact' %}text-blue-400 hover:text-blue-300{% else %}text-gray-300 hover:text-blue-400{% endif %} px-3 py-2 transition-colors duration-200">
+                                <i class="fas fa-envelope mr-1"></i> 联系我们
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 移动端菜单内容 -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-8">
+                    <a href="/" class="text-2xl font-bold text-blue-400">Chaohub AI</a>
+                    <button onclick="toggleMenu()" class="text-gray-300 hover:text-blue-400">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <a href="/" class="{% if request.path == '/' %}text-blue-400 hover:text-blue-300{% else %}text-gray-300 hover:text-blue-400{% endif %} py-2 text-lg">
+                        <i class="fas fa-home mr-2"></i> 首页
+                    </a>
+                    <a href="/about" class="{% if request.path == '/about' %}text-blue-400 hover:text-blue-300{% else %}text-gray-300 hover:text-blue-400{% endif %} py-2 text-lg">
+                        <i class="fas fa-info-circle mr-2"></i> 关于我们
+                    </a>
+                    <a href="/services" class="{% if request.path == '/services' %}text-blue-400 hover:text-blue-300{% else %}text-gray-300 hover:text-blue-400{% endif %} py-2 text-lg">
+                        <i class="fas fa-cogs mr-2"></i> 服务
+                    </a>
+                    <a href="/contact" class="{% if request.path == '/contact' %}text-blue-400 hover:text-blue-300{% else %}text-gray-300 hover:text-blue-400{% endif %} py-2 text-lg">
+                        <i class="fas fa-envelope mr-2"></i> 联系我们
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <main class="pt-16">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="bg-gray-900 text-white py-8 border-t border-blue-500/30">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center">
+                    <div class="flex justify-center space-x-6 mb-4">
+                        <a href="#" class="text-blue-400 hover:text-blue-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">&copy; 2024 Chaohub AI Omniverse. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/background.js') }}"></script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 

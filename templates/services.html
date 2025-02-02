@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}服务 - Chaohub AI Omniverse{% endblock %}
+
+{% block content %}
+<!-- 服务介绍头部 -->
+<section class="gradient-bg py-20">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+                我们的服务
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                提供全方位的AI解决方案，助力企业数字化转型，开启智能新时代
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 主要服务展示 -->
+<section class="py-20 bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="card rounded-xl p-8">
+                <i class="fas fa-brain service-icon mb-6"></i>
+                <h3 class="text-2xl font-bold text-blue-400 mb-4">AI模型开发</h3>
+                <p class="text-gray-300 mb-4">
+                    定制化AI模型开发，包括机器学习、深度学习、自然语言处理等领域的解决方案。
+                </p>
+                <ul class="text-gray-400 space-y-2">
+                    <li><i class="fas fa-check text-green-400 mr-2"></i>智能算法研发</li>
+                    <li><i class="fas fa-check text-green-400 mr-2"></i>模型优化训练</li>
+                    <li><i class="fas fa-check text-green-400 mr-2"></i>性能评估优化</li>
+                </ul>
+            </div>
+
+            <div class="card rounded-xl p-8">
+                <i class="fas fa-vr-cardboard service-icon mb-6"></i>
+                <h3 class="text-2xl font-bold text-blue-400 mb-4">元宇宙解决方案</h3>
+                <p class="text-gray-300 mb-4">
+                    打造沉浸式数字体验，构建虚拟现实和增强现实应用场景。
+                </p>
+                <ul class="text-gray-400 space-y-2">
+                    <li><i class="fas fa-check text-green-400 mr-2"></i>虚拟场景构建</li>
+                    <li><i class="fas fa-check text-green-400 mr-2"></i>数字资产开发</li>
+                    <li><i class="fas fa-check text-green-400 mr-2"></i>交互体验设计</li>
+                </ul>
+            </div>
+
+            <div class="card rounded-xl p-8">
+                <i class="fas fa-network-wired service-icon mb-6"></i>
+                <h3 class="text-2xl font-bold text-blue-400 mb-4">智能物联网</h3>
+                <p class="text-gray-300 mb-4">
+                    构建智能物联网生态系统，实现设备互联和智能控制。
+                </p>
+                <ul class="text-gray-400 space-y-2">
+                    <li><i class="fas fa-check text-green-400 mr-2"></i>设备互联管理</li>
+                    <li><i class="fas fa-check text-green-400 mr-2"></i>数据采集分析</li>
+                    <li><i class="fas fa-check text-green-400 mr-2"></i>智能控制系统</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 技术优势 -->
+<section class="py-20 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-blue-400 mb-12">技术优势</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="card rounded-xl p-8">
+                <div class="flex items-start">
+                    <i class="fas fa-shield-alt text-4xl text-blue-400 mr-4"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-300 mb-2">安全可靠</h3>
+                        <p class="text-gray-400">采用先进的安全防护措施，确保数据和系统安全</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card rounded-xl p-8">
+                <div class="flex items-start">
+                    <i class="fas fa-tachometer-alt text-4xl text-blue-400 mr-4"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-300 mb-2">高性能</h3>
+                        <p class="text-gray-400">优化的系统架构，提供卓越的性能表现</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+.service-icon {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #60A5FA 0%, #7C3AED 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+}
+.card:hover .service-icon {
+    transform: scale(1.1);
+}
+{% endblock %} 

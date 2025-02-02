@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="min-h-screen flex items-center justify-center">
+    <div class="text-center relative z-10">
+        <div class="mb-8">
+            <i class="fas fa-brain text-6xl text-blue-400 animate-pulse-slow"></i>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 animate-float bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+            Chaohub AI Omniverse
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-blue-200">AI全维空间</p>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto px-4 text-gray-300">
+            连接万物的智能枢纽，开启元宇宙时代的无限可能
+        </p>
+        <div class="mt-8">
+            <a href="/services" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+                探索服务 <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="card rounded-xl p-8 text-center">
+                <i class="fas fa-network-wired text-4xl text-blue-400 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-4 text-blue-300">智能连接</h3>
+                <p class="text-gray-400">打造智能生态系统的中枢神经，实现万物互联</p>
+            </div>
+            <div class="card rounded-xl p-8 text-center">
+                <i class="fas fa-lightbulb text-4xl text-blue-400 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-4 text-blue-300">创新突破</h3>
+                <p class="text-gray-400">以AI为引擎，推动技术与应用的革新</p>
+            </div>
+            <div class="card rounded-xl p-8 text-center">
+                <i class="fas fa-infinity text-4xl text-blue-400 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-4 text-blue-300">无限可能</h3>
+                <p class="text-gray-400">在元宇宙时代，创造数字生态的无限可能</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
